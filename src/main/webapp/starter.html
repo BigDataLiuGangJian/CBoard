@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CBoard | Starter</title>
+    <title>天熠数据可视化</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -31,8 +31,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
 
-    <script src="http://api.map.baidu.com/api?v=2.0&ak=6guHb1qes7pDDZxZ4WUAuqNrVerQpoV3"></script>
-    <script src="plugins/echart/echarts-3.6.2.min.js"></script>
+   <!--  <script src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script> -->
+    <script src="plugins/echart/echarts-4.1.0.min.js"></script>
     <!-- bmap-->
     <script src="plugins/echart/echarts-bmap.min.js"></script>
 
@@ -59,6 +59,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="lib/underscore-min.js"></script>
     <script src="lib/numbro.min.js"></script>
     <script src="lib/ui-select.min.js"></script>
+    
+    <script src="lib/jquery.cookie-1.4.1.min.js"></script>
 
     <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
@@ -73,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="plugins/echart/theme-fin1.js"></script>
     <script src="plugins/echart/dark.js"></script>
     <script src="plugins/echart/echarts-wordcloud.min.js"></script>
-    <script src="plugins/echart/echarts-liquidfill.min.js"></script>
+    <script src="plugins/echart/echarts-liquidfill.js"></script>
 
     <script src="lib/jquery.ba-resize.js"></script>
     <!--<script src="plugins/echart/world.json"></script>-->
@@ -186,7 +188,7 @@ desired effect
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <ui-view>
+        <ui-view >
 
         </ui-view>
         <!-- Content Header (Page header) -->
@@ -212,7 +214,6 @@ desired effect
 </div>
 <!-- ./wrapper -->
 
-
 <script src="org/cboard/util/CBoardEChartUtils.js"></script>
 <script src="org/cboard/util/CBoardEChartRender.js"></script>
 <script src="org/cboard/util/CBoardCommonUtils.js"></script>
@@ -223,6 +224,7 @@ desired effect
 <script src="org/cboard/util/CBoardJsTreeUtils.js"></script>
 <script src="org/cboard/util/CBoardHeatMapRender.js"></script>
 <script src="org/cboard/util/CBoardBmapRender.js"></script>
+<script src="org/cboard/util/CBoardPolarRender.js"></script>
 
 <script src="org/cboard/service/dashboard/cockpitLayoutService.js"></script>
 
@@ -276,13 +278,18 @@ desired effect
 <script src="org/cboard/service/chart/chartChinaMapBmapService.js"></script>
 <script src="org/cboard/service/chart/chartRelationService.js"></script>
 <script src="org/cboard/service/chart/chartWorldMapService.js"></script>
+<script src="org/cboard/service/chart/chartPolarService.js"></script>
+<script src="org/cboard/service/chart/chartSunburstService.js"></script>
+<script src="org/cboard/service/chart/chartParallelService.js"></script>
+<script src="org/cboard/service/chart/chartTreeService.js"></script>
 <script src="org/cboard/directive/dashboard/dashboardWidget.js"></script>
 <script src="org/cboard/filter/dashboard/dashboardViewFilter.js"></script>
 
 <script src="plugins/crossTable/plugin.js"></script>
 <script src="plugins/FineMap/plugin.js"></script>
-<!--<script src="plugins/FineMap/.js"></script>-->
 
+
+<!--<script src="plugins/FineMap/.js"></script>-->
 <script type="text/ng-template" id="echartContent">
     <div class="col-md-{{widget.width}}">
         <div class="box box-solid" style="z-index: 99;">

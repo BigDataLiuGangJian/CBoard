@@ -470,6 +470,7 @@ cBoard.controller('boardCtrl',
 
         $scope.copyNode = function () {
             if (!checkTreeNode("copy")) return;
+            console.log(getSelectedBoard())
             $scope.copyBoard(getSelectedBoard());
         };
 

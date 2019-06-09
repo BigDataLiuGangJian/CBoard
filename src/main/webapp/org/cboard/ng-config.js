@@ -3,9 +3,13 @@
  */
 
 
-angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
+angular.module('cBoard').config(['$stateProvider', function ($stateProvider) { //配置路由
     $stateProvider
         .state('home', CB_HOMEPAGE_SETTING )
+//        .state('home', {
+//            url: '/home',
+//            template: '<div>123456</div>'
+//        })
         .state('dashboard', {
             url: '/dashboard',
             abstract: true,

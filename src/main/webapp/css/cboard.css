@@ -180,6 +180,14 @@
 .cRelation.disabled{ background-image: url(../imgs/relation.png); }
 .cWorldMap{ background-image: url(../imgs/worldMap-active.png);}
 .cWorldMap.disabled{ background-image: url(../imgs/worldMap.png);}
+.cPolar{  background-image: url(../imgs/polar-active.png);  }
+.cPolar.disabled{  background-image: url(../imgs/polar.png);  }
+.cSunburst{  background-image: url(../imgs/sunburst-active.png);  }
+.cSunburst.disabled{  background-image: url(../imgs/sunburst.png);  }
+.cTree{  background-image: url(../imgs/tree-active.png);  }
+.cTree.disabled{  background-image: url(../imgs/tree.png);  }
+.cParallel{  background-image: url(../imgs/parallel-active.png);  }
+.cParallel.disabled{  background-image: url(../imgs/parallel.png);  }
 
 .chart-type a.active{
     background-color: #FFF;

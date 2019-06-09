@@ -7,10 +7,9 @@ cBoard.service('chartService', function($q, dataService, chartPieService, chartL
   chartMapService, chartScatterService, chartGaugeService, chartWordCloudService,
   chartTreeMapService, chartAreaMapService, chartHeatMapCalendarService, chartHeatMapTableService,
   chartLiquidFillService, chartContrastService, chartChinaMapService, chartChinaMapBmapService,
-  chartRelationService, chartWorldMapService) {
-
+  chartRelationService, chartWorldMapService, chartPolarService,chartSunburstService,chartTreeService,chartParallelService) {
   this.render = function(containerDom, widget, optionFilter, scope, reload, persist, relations, isCockpit) {
-      if (isCockpit) {
+	  if (isCockpit) {
           CBoardEChartRender.prototype.theme = "dark";
       } else {
           CBoardEChartRender.prototype.theme = "theme-fin1"
@@ -18,7 +17,7 @@ cBoard.service('chartService', function($q, dataService, chartPieService, chartL
     var deferred = $q.defer();
     var chart = getChartServices(widget.config);
     dataService.getDataSeries(widget.datasource, widget.query, widget.datasetId, widget.config, function(data) {
-      try {
+    try {
         var option = chart.parseOption(data);
         if (optionFilter) {
           optionFilter(option);
@@ -58,11 +57,14 @@ cBoard.service('chartService', function($q, dataService, chartPieService, chartL
                 }
               });
               dataService.getDataSeries(widget.datasource, widget.query, widget.datasetId, widget.config, function(data) {
-                var option = chart.parseOption(data);
+            	var option = chart.parseOption(data);
                 if (optionFilter) {
                   optionFilter(option);
                 }
                 render(option, data.drill.config);
+                if(widget.config.keys.length==3){
+                	widget.config.keys.splice(1,2)
+                }
               });
             });
           };
@@ -102,7 +104,7 @@ cBoard.service('chartService', function($q, dataService, chartPieService, chartL
   };
 
   this.realTimeRender = function(realTimeTicket, widget, optionFilter, scope, widgetWraper, isParamEvent) {
-    if (!realTimeTicket) {
+	if (!realTimeTicket) {
       return;
     }
     var chart = getChartServices(widget.config);
@@ -190,6 +192,18 @@ cBoard.service('chartService', function($q, dataService, chartPieService, chartL
       case 'worldMap':
         chart = chartWorldMapService;
         break;
+      case 'polar':
+    	chart = chartPolarService;
+    	break;
+      case 'sunburst':
+      	chart = chartSunburstService;
+      	break;
+      case 'tree':
+        	chart = chartTreeService;
+        	break;
+      case 'parallel':
+        	chart = chartParallelService;
+        	break;
     }
     return chart;
   };

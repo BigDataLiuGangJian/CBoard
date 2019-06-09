@@ -9,7 +9,8 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
         $scope.liteMode = false;
         $scope.tab = 'preview_widget2';
         //图表类型初始化
-        $scope.chart_types = [
+//定义图表tip
+        $scope.chart_types = [      
             {
                 name: translate('CONFIG.WIDGET.TABLE'), value: 'table', class: 'cTable',
                 row: translate('CONFIG.WIDGET.TIPS_DIM_NUM_0_MORE'),
@@ -135,18 +136,43 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
                 row: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1_MORE'),
                 column: translate('CONFIG.WIDGET.TIPS_DIM_NUM_0_MORE'),
                 measure: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1')
+            },
+            {
+                name: translate('CONFIG.WIDGET.POLAR'), value: 'polar', class: 'cPolar',
+                row: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1_MORE'),
+                column: translate('CONFIG.WIDGET.TIPS_DIM_NUM_0'),
+                measure: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1_MORE')
+            },
+            {
+                name: translate('CONFIG.WIDGET.SUNBURST'), value: 'sunburst', class: 'cSunburst',
+                row: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1_MORE'),
+                column: translate('CONFIG.WIDGET.TIPS_DIM_NUM_0'),
+                measure: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1')
+            },
+            {
+                name: translate('CONFIG.WIDGET.PARALLEL'), value: 'parallel', class: 'cParallel',
+                row: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1_MORE'),
+                column: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1_MORE'),
+                measure: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1_MORE')
+            },
+            {
+                name: translate('CONFIG.WIDGET.TREE'), value: 'tree', class: 'cTree',
+                row: translate('CONFIG.WIDGET.TIPS_DIM_NUM_1_MORE'),
+                column: translate('CONFIG.WIDGET.TIPS_DIM_NUM_0'),
+                measure: translate('CONFIG.WIDGET.TIPS_DIM_NUM_0')
             }
         ];
-
-        $scope.chart_types_status = {
+//定义图表是否可选
+        $scope.chart_types_status = {      
             "line": true, "pie": true, "kpi": true, "table": true,
             "funnel": true, "sankey": true, "radar": true, "map": true,
             "scatter": true, "gauge": true, "wordCloud": true, "treeMap": true,
             "heatMapCalendar": true, "heatMapTable": true, "liquidFill": true,
             "areaMap": true, "contrast": true,"chinaMap":true,"chinaMapBmap":true,
-            "relation":true, "worldMap": true
+            "relation":true, "worldMap": true, "polar":true,"sunburst":true,"parallel":true,
+            "tree":true
         };
-
+//定义图表细分类型及属性
         $scope.value_series_types = [
             {name: translate('CONFIG.WIDGET.LINE'), value: 'line'},
             {name: translate('CONFIG.WIDGET.AREA_LINE'),value:'arealine'},
@@ -190,7 +216,6 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
         });
 
 
-
         $scope.treemap_styles = [
             {name: translate('CONFIG.WIDGET.RANDOM'), value: 'random'},
             {name: translate('CONFIG.WIDGET.MULTI'), value: 'multi'},
@@ -225,7 +250,7 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
             {name: translate('CONFIG.WIDGET.SQUARE'), value: 'square'},
             {name: translate('CONFIG.WIDGET.DIAMOND'), value: 'diamond'}
         ];
-
+//图表配置项个数定义
         /***************************************
          *  0:  None items
          *  1:  only 1 item
@@ -253,9 +278,13 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
             chinaMap:{keys: 2, groups: -1, filters: -1, values: 2},
             chinaMapBmap:{keys: 2, groups: -1, filters: -1, values: 2},
             relation: {keys: 2, groups: 2, filters: -1, values: 1},
-            worldMap: {keys: 2, groups: -1, filters: -1, values: 1}
+            worldMap: {keys: 2, groups: -1, filters: -1, values: 1},
+            polar:{keys: 2, groups: 0, filters: -1, values: 2},
+            sunburst:{keys:2, groups:0, filters:-1,values:1},
+            parallel:{keys:2, groups:2, filters:-1,values:2},
+            tree:{keys:2, groups:0, filters:-1,values:0}
         };
-
+//一个不清楚什么作用的开关，mode值为true
         $scope.switchLiteMode = function (mode) {
             if (mode) {
                 $scope.liteMode = mode;
@@ -303,7 +332,7 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
         $http.get("dashboard/getDatasourceList.do").success(function (response) {
             $scope.datasourceList = response;
             getCategoryList();
-            getWidgetList(function () {
+            getWidgetList(function () {    //图表列表
                 if ($stateParams.id) {
                     $scope.editWgt(_.find($scope.widgetList, function (w) {
                         return w.id == $stateParams.id;
@@ -314,7 +343,7 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
                 }
             });
         });
-
+//获取图表集名称
         $scope.getCurDatasetName = function() {
             if ($scope.customDs) {
                 return translate('CONFIG.WIDGET.NEW_QUERY');
@@ -329,7 +358,7 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
         $scope.datasetGroup = function (item) {
             return item.categoryName;
         };
-
+//获取图表列表
         var getWidgetList = function (callback) {
             $http.get("dashboard/getWidgetList.do").success(function (response) {
                 $scope.widgetList = response;
@@ -516,11 +545,12 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
             }
         };
 
-        var addWatch = function () {
+        var addWatch = function () { //添加图表时选择数据集时触发,初始化config
             $scope.$watch('curWidget.config.keys', changeChartStatus, true);
             $scope.$watch('curWidget.config.groups', changeChartStatus, true);
             $scope.$watch('curWidget.config.values', changeChartStatus, true);
             $scope.$watch('curWidget.config.filters', changeChartStatus, true);
+            $scope.$watch('curWidget.config.yaxis', changeChartStatus, true);
             addHelpMessage();
             addValidateWatch();
         };
@@ -635,10 +665,10 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
             $scope.curWidget.config.chart_type = chart_type;
             //loadDsExpressions();
             cleanPreview();
-
             $scope.curWidget.config.selects = oldConfig.selects;
             $scope.curWidget.config.keys = oldConfig.keys;
             $scope.curWidget.config.groups = oldConfig.groups;
+            $scope.curWidget.config.yaxis = oldConfig.yaxis;
             $scope.curWidget.config.values = [];
 
             addHelpMessage();
@@ -808,6 +838,7 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
             $scope.curWidget.config.groups = [];
             $scope.curWidget.config.values = [{name: '', cols: []}];
             $scope.curWidget.config.filters = [];
+            $scope.curWidget.config.yaxiss = [];
             addWatch();
         };
 
@@ -938,7 +969,7 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
 //     dashboardService.saveWidget('123', $scope.datasource, $scope.config);
 // };
 
-        $scope.add_value = function () {
+        $scope.add_value = function () {    //添加line的轴
             $scope.curWidget.config.values.push({
                 name: '',
                 series_type: 'line',
@@ -1126,7 +1157,7 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
             }
         }
 
-        $scope.filterDimension = function (e) {
+        $scope.filterDimension = function (e) { //获取添加图表页面左侧数据集的纬度树，剔除已经被选择的项
             if (e.type == 'level') {
                 return true;
             }
@@ -1134,6 +1165,9 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
                 return k.col == e.column;
             });
             var groups = _.find($scope.curWidget.config.groups, function (k) {
+                return k.col == e.column;
+            });
+            var yaxis = _.find($scope.curWidget.config.yaxis, function (k) {
                 return k.col == e.column;
             });
             return !(keys || groups);
@@ -1283,7 +1317,7 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
                     list[index] = item.col;
                 }
             },
-            toKeysGroups: function (list, index, item, type) {
+            toKeysGroups: function (list, index, item, type) { //插入keys，或者groups
                 if (type == 'col') {
                     list[index] = {col: item.col, type: 'eq', values: [], sort: 'asc'};
                 } else if (type == 'dimension' || type == 'select') {

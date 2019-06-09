@@ -3,7 +3,7 @@
  */
 cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, $q, $filter, $uibModal, ModalUtils) {
 
-    var translate = $filter('translate');
+    var translate = $filter('translate');  //国际化和本地化转换
 
     $rootScope.alert = function (msg) {
         ModalUtils.alert(msg);

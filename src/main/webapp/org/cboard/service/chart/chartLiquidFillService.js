@@ -11,13 +11,14 @@ cBoard.service('chartLiquidFillService', function () {
         }
         var height;
         scope ? height = scope.myheight - 20 : null;
+        var aaa = new CBoardEChartRender(containerDom, option).chart(height, persist);
         return new CBoardEChartRender(containerDom, option).chart(height, persist);
     };
 
     this.parseOption = function (data) {
         var config = data.chartConfig;
         var maxValue = config.values[0].maxValue ? config.values[0].maxValue : 100;
-        console.log(maxValue);
+        
 
         var animation = true;
         if (config.animation == 'static') {
@@ -48,6 +49,7 @@ cBoard.service('chartLiquidFillService', function () {
                 type: 'liquidFill',
                 shape: style,
                 data: datas,
+                //data:[0.6],
                 waveAnimation: animation,
                 radius: '70%',
                 backgroundStyle: {
@@ -66,7 +68,14 @@ cBoard.service('chartLiquidFillService', function () {
                 }
             }
         };
-
+//        var option = {
+//        		series: [{
+//        	        type: 'liquidFill',
+//        	        data: [{
+//        	        	value:0.6
+//        	        	}]
+//        	    }]
+//        }
         if(datas[0] == 1){
             option.label.normal = {
                 formatter:"I'm full."

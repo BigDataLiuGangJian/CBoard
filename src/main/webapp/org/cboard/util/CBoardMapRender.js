@@ -7,7 +7,7 @@ var CBoardMapRender = function (jqContainer, options, drill) {
     this.jqContainer = jqContainer;
     this.drill = drill;
     var _this = this;
-    $(jqContainer).html("<div class='map_wrapper'></div>");
+    $(jqContainer).html("<div class='map_wrapper' id=div-"+options.chartConfig.keys[0].id+"></div>");
     $('.map_wrapper').resize(function () {
         _this.do(_this.tall);
     });

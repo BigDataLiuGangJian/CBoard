@@ -38,6 +38,22 @@ cBoard.directive('dashboardWidget', function ($compile, $templateCache, dataServ
         var ndWrapper = $(element).find('.box-body');
         scope.widget.render(ndWrapper, null, scope);
     };
+    var renderPolar = function (scope, element, attrs) {
+    	var template = $templateCache.get("chartContent");
+        scope.myheight = scope.row.height ? (scope.row.height - 44) : 500;
+        var aa = $compile(template)(scope);
+        element.append(aa);
+        var ndWrapper = $(element).find('.box-body');
+        scope.widget.render(ndWrapper, null, scope);
+    };
+    var renderSunburst = function (scope, element, attrs) {
+    	var template = $templateCache.get("chartContent");
+        scope.myheight = scope.row.height ? (scope.row.height - 44) : 500;
+        var aa = $compile(template)(scope);
+        element.append(aa);
+        var ndWrapper = $(element).find('.box-body');
+        scope.widget.render(ndWrapper, null, scope);
+    };
 
     return {
         restrict: 'E',
@@ -57,6 +73,12 @@ cBoard.directive('dashboardWidget', function ($compile, $templateCache, dataServ
                         case 'table':
                             renderTable(scope, element, attrs);
                             break;
+                        case 'polar':
+                        	renderPolar(scope, element, attrs);
+                        	break;
+                        case 'sunburst':
+                        	renderSunburst(scope, element, attrs);
+                        	break;
                         default:
                             renderEchart(scope, element, attrs);
                     }

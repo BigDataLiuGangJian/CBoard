@@ -49,6 +49,18 @@ CBoardEChartRender.prototype.chart = function (group, persist) {
     if(persist){
         options.animation = false;
     }
+//    options = {
+//            series: [{
+//                type: 'liquidFill',
+//                data: [{
+//                    value: 0.7
+//                }]
+//            }]
+//        };
+//    console.log(self.ecc.setOption)
+//    var chart = echarts.init(document.getElementById('preview'));
+//    chart.setOption(options);
+//    debugger
     self.ecc.setOption(options);
     self.changeSize(self.ecc);
     self.container.resize(function (e) {
@@ -140,9 +152,9 @@ CBoardEChartRender.prototype.addClick = function (chartConfig, relations, $state
         });
 
         var paramValues = [];
-
         switch (chartConfig.chart_type) {
             case 'line':
+            case 'polar':
             case 'contrast':
             case 'scatter':
             case 'pie':
@@ -169,7 +181,6 @@ CBoardEChartRender.prototype.addClick = function (chartConfig, relations, $state
                     }
                 });
                 break;
-
             case 'funnel':
                 _.each(sourceField, function(field){
                     if($.inArray(field, _.map(keys, function(key){return key.name;}))!=-1 ){
@@ -253,6 +264,7 @@ CBoardEChartRender.prototype.addClick = function (chartConfig, relations, $state
                 break;
 
             case 'treeMap':
+            case 'sunburst':
                 _.each(sourceField, function(field){
                     if($.inArray(field, _.map(keys, function(key){return key.name.toUpperCase();}))!=-1){
                         _.each(keys,function(key){

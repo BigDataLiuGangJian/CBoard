@@ -5,10 +5,8 @@
 var settings = {
     preferredLanguage: "cn" // en/cn: Switch language to Chinese
 };
-
 var CB_I18N;
 var CB_HOMEPAGE_SETTING;
-
 $.ajax({
     url: "i18n/" + settings.preferredLanguage + "/cboard.json",
     type: "GET",

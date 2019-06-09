@@ -11,7 +11,6 @@ cBoard.service('chartLineService', function ($state, $window) {
     };
 
     this.parseOption = function (data) {
-
         var chartConfig = data.chartConfig;
         var casted_keys = data.keys;
         var casted_values = data.series;
@@ -141,7 +140,6 @@ cBoard.service('chartLineService', function ($state, $window) {
                 categoryAxis.boundaryGap = true;
             }
         });
-
         var echartOption = {
             grid: angular.copy(echartsBasicOption.grid),
             legend: {

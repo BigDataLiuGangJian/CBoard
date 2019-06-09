@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.googlecode.aviator:aviator:3.0.1">
     <CLASSES>
-      <root url="jar://D:/Software/apache-maven-3.5.2-bin/conf/repository/com/googlecode/aviator/aviator/3.0.1/aviator-3.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/software/repoMVN/com/googlecode/aviator/aviator/3.0.1/aviator-3.0.1.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://D:/Software/apache-maven-3.5.2-bin/conf/repository/com/googlecode/aviator/aviator/3.0.1/aviator-3.0.1-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/software/repoMVN/com/googlecode/aviator/aviator/3.0.1/aviator-3.0.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://D:/Software/apache-maven-3.5.2-bin/conf/repository/com/googlecode/aviator/aviator/3.0.1/aviator-3.0.1-sources.jar!/" />
+      <root url="jar://$USER_HOME$/software/repoMVN/com/googlecode/aviator/aviator/3.0.1/aviator-3.0.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

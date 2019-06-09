@@ -92,7 +92,7 @@
     "CONFIRM_PASSWORD": "确认密码"
   },
   "FOOTER": {
-    "COPYRIGHT": "CBoard开源项目组",
+    "COPYRIGHT": "706所",
     "VERSION": "版本"
   },
   "DASHBOARD": {
@@ -234,7 +234,11 @@
       "CHINA_MAP":"中国地图（本地）",
       "CHINA_MAP_BMAP":"中国地图（百度）",
       "RELATION": "关系图",
-      "WORLD_MAP": "世界地图"
+      "WORLD_MAP": "世界地图",
+      "POLAR":"双轴极坐标图",
+      "SUNBURST":"旭日图",
+      "TREE":"树图",
+      "PARALLEL":"平行坐标"
     },
     "DASHBOARD": {
       "DASHBOARD": "看板",
