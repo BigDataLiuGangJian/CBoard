@@ -13,7 +13,6 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
 
-  <link rel="stylesheet" href="css/login.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -23,51 +22,53 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-<!--   <div class="login-logo">
-  <span><b>天熠 </b></span><span>数据可视化</span> 
-  </div> -->
-  <div class='login-parent'>
-  	<div class="login-img">
-  		<div class="login-logo-img">
-  		</div>
-  	</div>
-  	<div class="login-box-content">
-  		<!-- /.login-logo -->
-	  <div class="login-box-body">
-		<p class="login-box-msg">
-		  <div class="login-logo">
-			<span><b>天熠 </b></span><span>数据可视化</span> 
-		  </div>
-		</p>
-	    <form action="login" method="post">
-	      <div class="form-group has-feedback">
-	        <input type="text" class="form-control" placeholder="用户名" name="username" id="uname">
-	        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-	      </div>
-	      <div class="form-group has-feedback">
-	        <input type="password" class="form-control" placeholder="密      码" name="password" id="pwd">
-	        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-	      </div>
-	      <div class="row">
-	        <div class="col-xs-8">
-	          <div class="checkbox icheck">
-	            <label>
-	              <input type="checkbox" name="remember_me" value="true" style=”width:10px;height:10px;”> 记住密码
-	            </label>
-	          </div>
-	        </div>
-	        <!-- /.col -->
-	        <div class="col-xs-4">
-	          <button type="submit" class="btn btn-primary btn-block btn-flat" id="sub">
-	            登录
-	          </button>
-	        </div>
-	        <!-- /.col -->
-	      </div>
-	    </form>
-	  </div>
-  	</div>
-  	<div class='clear'></div>
+  <div class="login-logo">
+  <span><b>天熠 </b></span><span>数据可视化</span>
+  <span></span> 
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+	<p class="login-box-msg"></p>
+    <form action="login" method="post">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="用户名" name="username" id="uname">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="密      码" name="password" id="pwd">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox" name="remember_me" value="true" style=”width:10px;height:10px;”> 记住密码
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" id="sub">
+            登录
+          </button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <!--
+        <div class="social-auth-links text-center">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+            Facebook</a>
+          <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+            Google+</a>
+        </div>
+    /.social-auth-links -->
+    <!--
+    <a href="#">I forgot my password</a><br>
+    <a href="#" class="text-center">Register a new membership</a>
+    -->
   </div>
   <!-- /.login-box-body -->
 </div>

@@ -39,9 +39,15 @@
                 <span ng-show="exportStatus"><i class="fa fa-spinner fa-spin"></i> Loading</span>
             </button>
         </div>
-        <div style="display: inline-block" ng-click="editBoard()" ng-show="isShowMenu('config.board')">
+       <!--  <div style="display: inline-block" ng-click="editBoard()" ng-show="isShowMenu('config.board')"> -->
+        <div style="display: inline-block" ng-click="editBoard()" ng-show="ifNotView?isShowMenu('config.board'):false">
             <button class="btn btn-primary btn-sm">
                 <span><i class="fa fa-edit"></i>&nbsp;{{"COMMON.EDIT" | translate}}</span>
+            </button>
+        </div>
+        <div style="display: inline-block" ng-click="exportUrl()" ng-show="ifNotView">
+            <button class="btn btn-primary btn-sm">
+                <span><i class="fa fa-download" ></i>&nbsp;导出URL</span>
             </button>
         </div>
     </div>

@@ -279,10 +279,10 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
             chinaMapBmap:{keys: 2, groups: -1, filters: -1, values: 2},
             relation: {keys: 2, groups: 2, filters: -1, values: 1},
             worldMap: {keys: 2, groups: -1, filters: -1, values: 1},
-            polar:{keys: 2, groups: 0, filters: -1, values: 2},
-            sunburst:{keys:2, groups:0, filters:-1,values:1},
-            parallel:{keys:2, groups:2, filters:-1,values:2},
-            tree:{keys:2, groups:0, filters:-1,values:0}
+            polar:{keys: 2, groups: 0, filters: 0, values: 2},
+            sunburst:{keys:2, groups:0, filters:0,values:1},
+            parallel:{keys:2, groups:2, filters:0,values:2},
+            tree:{keys:2, groups:0, filters:0,values:0}
         };
 //一个不清楚什么作用的开关，mode值为true
         $scope.switchLiteMode = function (mode) {

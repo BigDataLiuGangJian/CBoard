@@ -1,5 +1,6 @@
 <!-- Logo -->
-<a href="starter.html" class="logo">
+<a href="javascript:void(0);" class="logo">
+<!-- <a href="###" class="logo"> -->
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><i class="fa fa-home"></i></span>
     <!-- logo for regular state and mobile devices -->
@@ -8,13 +9,13 @@
 </a>
 
 <!-- Header Navbar -->
-<nav class="navbar navbar-static-top" role="navigation">
+<nav class="navbar navbar-static-top" role="navigation" >
     <!-- Sidebar toggle button-->
-    <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+    <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button" ng-show="ifNotView">
         <span class="sr-only">{{'HEADER.TOGGLE_NAVIGATION'|translate}}</span>
     </a>
     <!-- Navbar Right Menu -->
-    <div class="navbar-custom-menu">
+    <div class="navbar-custom-menu" ng-show="ifNotView">
         <ul class="nav navbar-nav">
             <!-- User Account Menu -->
             <li class="dropdown user user-menu">
@@ -30,8 +31,9 @@
                     <li class="user-header">
                         <img src="{{user.avatar}}" class="img-circle">
                         <p>
-                            {{user.username + ' - ' + user.company + ' ' + user.department}}
-                            <small>{{user.userId}}</small>
+                            <!-- {{user.username + ' - ' + user.company + ' ' + user.department}} -->
+                            {{'用户名：' + user.username}}
+                            <small>{{'用户ID：' + user.userId}}</small>
                         </p>
                     </li>
                     <!-- Menu Body -->

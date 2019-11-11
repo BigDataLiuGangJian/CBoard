@@ -180,12 +180,11 @@ desired effect
 -->
 <body class="hold-transition skin-blue sidebar-mini" ng-class="{'sidebar-collapse': liteMode}">
 <div class="wrapper">
-
     <!-- Main Header -->
     <header class="main-header" ng-include="'starter/main-header.html'"></header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar" ng-include="'starter/main-sidebar.html'"></aside>
-
+    <!-- <aside class="main-sidebar" ng-include="'starter/main-sidebar.html'"></aside> -->
+    <aside class="main-sidebar" ng-include="'starter/main-sidebar.html'" ng-show='ifNotView'></aside>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <ui-view >
@@ -346,6 +345,34 @@ desired effect
             </div>
         </div>
     </div>
+</script>
+<script>
+var getCookie = function (name) {
+    //获取当前所有cookie
+    var strCookies = document.cookie;
+    //截取变成cookie数组
+    var array = strCookies.split('; ');
+    //循环每个cookie
+    for (var i = 0; i < array.length; i++) {
+        //将cookie截取成两部分
+        var item = array[i].split("=");
+        //判断cookie的name 是否相等
+        if (item[0] == name) {
+            return item[1];
+        }
+    }
+    return null;
+}
+var ifNotView = getCookie('view');
+console.log(ifNotView)
+if(ifNotView=='false'){
+	$('.content-wrapper').css("margin",0);
+	$('footer').css("margin",0);
+	var addUrl = getCookie('kp');
+	if(addUrl){
+		document.location.href = 'http://localhost:8080/cboard/starter.html#'+addUrl;
+	}
+}
 </script>
 </body>
 </html>

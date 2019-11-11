@@ -3370,9 +3370,12 @@ table.text-center th {
 .register-page {
   background: #d2d6de;
 }
-.login-page {
+/* .login-page {
   background: #99ccff;
-}
+} */
+.login-page {
+  background: #d2d6de;
+} 
 .login-box,
 .register-box {
   width: 360px;
@@ -5059,3 +5062,4 @@ button >canvas {
     width: 33.3333333%;
   }
 }
+

@@ -1,0 +1,40 @@
+html,body{
+	position: relative;
+	height:100%;
+}
+.login-parent{
+	padding:0 10px;
+	background-color:#fff;
+}
+.login-img{
+	width:360px;
+	height:400px;	
+	float:left;
+	padding:100px 0;
+}
+.login-logo-img{
+	height:200px;
+	border-right:1px solid #ccc;
+	background-image:url(../imgs/timg.jpeg);
+	background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+.login-box{
+	width:740px !important;
+	position: absolute;
+    top:50%;
+    left:50%;
+    margin-left:-370px;
+    margin-top:-200px; 
+}
+.login-box-content{
+	width:360px;
+	height:400px;
+	float:left;
+}
+/* .login-box-content{
+	padding:80px 0px;
+} */
+.clear{
+	clear:both;
+}

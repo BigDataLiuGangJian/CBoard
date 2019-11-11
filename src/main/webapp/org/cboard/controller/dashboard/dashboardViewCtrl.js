@@ -81,6 +81,9 @@ cBoard.controller('dashboardViewCtrl', function ($timeout, $rootScope, $scope, $
     };
 
     $http.post("admin/isConfig.do", {type: 'widget'}).success(function (response) {
+    	if(!$rootScope.ifNotView){
+    		response = false;
+    	}
         $scope.widgetCfg = response;
     });
 
@@ -117,7 +120,11 @@ cBoard.controller('dashboardViewCtrl', function ($timeout, $rootScope, $scope, $
             }
         }
     );
-
+    $scope.exportUrl = function(){
+    	var url = 'http://localhost:8080/cboard/login.do#view?kp='+window.location.hash.slice(1);
+    	window.prompt('请复制URL',url);
+    	//alert(url)
+    };
     $scope.export = function () {
         if ($scope.exportStatus) {
             return;

@@ -8,9 +8,35 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
     $rootScope.alert = function (msg) {
         ModalUtils.alert(msg);
     };
-
+    //新添加读取cookie函数
+    var getCookie = function (name) {
+        //获取当前所有cookie
+        var strCookies = document.cookie;
+        //截取变成cookie数组
+        var array = strCookies.split('; ');
+        //循环每个cookie
+        for (var i = 0; i < array.length; i++) {
+            //将cookie截取成两部分
+            var item = array[i].split("=");
+            //判断cookie的name 是否相等
+            if (item[0] == name) {
+                return item[1];
+            }
+        }
+        return null;
+    }
+    //$rootScope.ifView = getCookie('view');
+    if(getCookie('view')=="false"){
+    	$rootScope.ifNotView = false;
+        $scope.ifNotView = false;
+    }
+    else{
+    	$rootScope.ifNotView = true;
+        $scope.ifNotView = true;
+    }
     $http.get("commons/getUserDetail.do").success(function (response) {
         $scope.user = response;
+        $rootScope.user = response;
         var avatarUrl = 'dist/img/user-male-circle-blue-128.png';
         $scope.user.avatar = avatarUrl;
     });
